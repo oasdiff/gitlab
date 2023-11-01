@@ -3,7 +3,8 @@ build-job:
   script:
     - echo "building..."
 
-test-job1:
-  stage: test
+breaking-changes-job:
+  stage: check for API Breaking Changes
+  image: 'tufin/oasdiff:main'
   script:
-    - echo "This job tests something"
+    - oasdiff breaking specs/base specs/revision
